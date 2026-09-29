@@ -13,3 +13,7 @@ src/css/styles.css
 # Fichiers systèmes divers
 .DS_Store
 Thumbs.db
+
+# Dossier publié par Vercel (généré par npm run build)
+dist/
+.vercel
