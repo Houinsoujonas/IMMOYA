@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paramètres — IMMOYA Admin</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../../src/css/styles.css" />
+</head>
+<body class="md:flex">
+  <div id="admin-sidebar"></div>
+
+  <main class="flex-1 p-6 md:p-10 max-w-2xl">
+    <h1 class="font-display text-2xl md:text-3xl text-ink mb-8">Paramètres</h1>
+
+    <div class="card p-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <p class="text-sm text-ink/70">Mot de passe admin</p>
+        <span id="setting-password" class="text-xs px-3 py-1 rounded-card bg-ink/5">...</span>
+      </div>
+      <div class="flex items-center justify-between">
+        <p class="text-sm text-ink/70">Connexion à l'API Untera</p>
+        <span id="setting-untera" class="text-xs px-3 py-1 rounded-card bg-ink/5">...</span>
+      </div>
+      <p class="text-xs text-ink/50 pt-2">
+        Ces réglages se configurent dans le fichier <code>.env</code> à la racine du projet
+        (UNTERA_API_KEY, UNTERA_BASE_URL, ADMIN_PASSWORD). Redémarrez le serveur après modification.
+      </p>
+    </div>
+  </main>
+
+  <script src="../../src/js/admin-guard.js"></script>
+  <script>
+    // Charge et affiche l'état de configuration (jamais les valeurs secrètes elles-mêmes)
+    fetch("/api/admin/settings")
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!data) return; // session pas encore validée (admin-guard.js redirige)
+        document.getElementById("setting-password").textContent = data.adminPasswordConfigured
+          ? "Configuré"
+          : "Non configuré";
+        document.getElementById("setting-untera").textContent = data.untera.reachable
+          ? "Connectée"
+          : data.untera.configured
+          ? "Configurée mais injoignable"
+          : "Non configurée (données locales utilisées)";
+      });
+  </script>
+  <script src="../../src/components/admin-sidebar.js"></script>
+  <script>renderAdminSidebar("admin-sidebar", "settings");</script>
+</body>
+</html>

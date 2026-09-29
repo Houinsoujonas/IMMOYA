@@ -1,0 +1,15 @@
+# Dépendances Node.js (réinstallables via npm install, inutile de versionner)
+node_modules/
+
+# Fichiers d'environnement contenant des secrets (clé API Untera, etc.)
+.env
+.env.*
+# Exception : le fichier d'exemple (sans vraie valeur) reste versionné
+!.env.example
+
+# CSS généré par la CLI Tailwind (fichier de build, pas une source)
+src/css/styles.css
+
+# Fichiers systèmes divers
+.DS_Store
+Thumbs.db

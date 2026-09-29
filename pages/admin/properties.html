@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biens — IMMOYA Admin</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../../src/css/styles.css" />
+</head>
+<body class="md:flex">
+  <div id="admin-sidebar"></div>
+
+  <main class="flex-1 p-6 md:p-10 max-w-6xl">
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="font-display text-2xl md:text-3xl text-ink">Biens</h1>
+      <a href="property-form.html" class="btn-primary text-sm">+ Ajouter un bien</a>
+    </div>
+
+    <form id="admin-filters-form" class="flex flex-wrap gap-3 mb-6">
+      <select name="type" class="border border-ink/15 rounded-card px-3 py-2 text-sm bg-white">
+        <option value="">Tous les types</option>
+        <option value="Appartement">Appartement</option>
+        <option value="Maison">Maison</option>
+        <option value="Villa">Villa</option>
+        <option value="Studio">Studio</option>
+        <option value="Duplex">Duplex</option>
+        <option value="Terrain">Terrain</option>
+        <option value="Bureau">Bureau</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Entrepôt">Entrepôt</option>
+      </select>
+      <select name="transaction" class="border border-ink/15 rounded-card px-3 py-2 text-sm bg-white">
+        <option value="">Toutes transactions</option>
+        <option value="vente">Vente</option>
+        <option value="location">Location</option>
+      </select>
+      <select name="status" class="border border-ink/15 rounded-card px-3 py-2 text-sm bg-white">
+        <option value="">Tous les statuts</option>
+        <option value="disponible">Disponible</option>
+        <option value="vendu">Vendu</option>
+        <option value="loué">Loué</option>
+      </select>
+      <input type="text" name="city" placeholder="Ville" class="border border-ink/15 rounded-card px-3 py-2 text-sm" />
+      <button type="submit" class="btn-secondary text-sm">Filtrer</button>
+      <button type="reset" class="text-sm text-ink/50 hover:underline">Réinitialiser</button>
+    </form>
+
+    <div class="card p-5 overflow-x-auto">
+      <table class="w-full text-sm text-left">
+        <thead>
+          <tr class="border-b border-ink/10 text-ink/50">
+            <th class="py-2 pr-4">Titre</th>
+            <th class="py-2 pr-4">Type</th>
+            <th class="py-2 pr-4">Transaction</th>
+            <th class="py-2 pr-4">Ville</th>
+            <th class="py-2 pr-4">Prix</th>
+            <th class="py-2 pr-4">Statut</th>
+            <th class="py-2 pr-4">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="properties-body"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="../../src/js/admin-guard.js"></script>
+  <script src="../../src/js/format.js"></script>
+  <script src="../../src/components/admin-sidebar.js"></script>
+  <script src="../../src/js/admin-properties.js"></script>
+  <script>renderAdminSidebar("admin-sidebar", "properties");</script>
+</body>
+</html>

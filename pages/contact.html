@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — IMMOYA</title>
+  <meta name="description" content="Contactez l'équipe IMMOYA pour toute question ou demande de visite." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../src/css/styles.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="max-w-5xl mx-auto px-4 md:px-8 py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 rounded-card overflow-hidden shadow-soft">
+      <!-- Panneau de réassurance (pas de photo : on ne montre jamais une image qui pourrait
+           laisser croire qu'elle représente un bien ou un lieu réel, §4.7 du cahier) -->
+      <div class="relative bg-accent-navy text-white p-10 flex flex-col justify-center min-h-[420px]">
+        <div class="relative">
+          <h1 class="text-3xl font-bold leading-tight">Une question ?<br />Une visite ?<br />Nous sommes là pour vous.</h1>
+          <div class="space-y-4 mt-10 text-sm">
+            <p class="flex items-center gap-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 shrink-0"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Réponse rapide sous 24h</p>
+            <p class="flex items-center gap-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 shrink-0"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> Accompagnement personnalisé</p>
+            <p class="flex items-center gap-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 shrink-0"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/></svg> 100% sécurisé</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="bg-white p-8 md:p-10">
+        <h2 class="text-xl font-semibold text-ink mb-6">Envoyer une demande</h2>
+        <form id="contact-form" class="space-y-4">
+          <!-- Piège à robots (honeypot) : invisible et ignoré par les humains, rempli par les bots -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true" />
+          <div>
+            <label class="block text-xs text-ink/50 mb-1">Nom complet</label>
+            <input type="text" name="clientName" placeholder="Votre nom" required class="w-full border border-line rounded-full px-4 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-ink/50 mb-1">Téléphone</label>
+            <input type="tel" name="clientPhone" placeholder="Votre numéro de téléphone" class="w-full border border-line rounded-full px-4 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-ink/50 mb-1">Email</label>
+            <input type="email" name="clientEmail" placeholder="Votre adresse email" required class="w-full border border-line rounded-full px-4 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-ink/50 mb-1">Sujet</label>
+            <input type="text" name="subject" placeholder="Objet de votre message" class="w-full border border-line rounded-full px-4 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-ink/50 mb-1">Message</label>
+            <textarea name="message" placeholder="Votre message..." rows="4" required class="w-full border border-line rounded-2xl px-4 py-2.5 text-sm"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full text-sm">Envoyer la demande</button>
+          <p id="contact-feedback"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../src/js/api.js"></script>
+  <script src="../src/js/favorites.js"></script>
+  <script src="../src/js/i18n.js"></script>
+  <script src="../src/components/navbar.js"></script>
+  <script src="../src/components/footer.js"></script>
+  <script src="../src/js/contact-page.js"></script>
+  <script src="../src/js/animations.js"></script>
+  <script src="../src/js/app.js"></script>
+</body>
+</html>

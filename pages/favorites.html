@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes favoris — IMMOYA</title>
+  <meta name="description" content="Retrouvez les biens que vous avez sauvegardés." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../src/css/styles.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+    <div class="flex items-center justify-between mb-2">
+      <h1 class="text-3xl md:text-4xl font-bold text-ink">Mes favoris</h1>
+      <button id="clear-favorites" class="hidden text-sm text-ink/50 hover:text-red-700 transition-colors">Vider mes favoris</button>
+    </div>
+    <p class="text-ink/60 text-sm mb-8">
+      Vos biens sauvegardés sont conservés sur cet appareil, sans compte à créer.
+    </p>
+
+    <div id="favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+
+    <div id="favorites-empty" class="hidden text-center py-20">
+      <p class="text-ink/60">Vous n'avez pas encore de bien favori.</p>
+      <a href="properties.html" class="btn-primary mt-4 inline-block text-sm">Découvrir les biens</a>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../src/js/format.js"></script>
+  <script src="../src/js/favorites.js"></script>
+  <script src="../src/js/api.js"></script>
+  <script src="../src/js/i18n.js"></script>
+  <script src="../src/components/navbar.js"></script>
+  <script src="../src/components/footer.js"></script>
+  <script src="../src/components/property-card.js"></script>
+  <script src="../src/js/favorites-page.js"></script>
+  <script src="../src/js/animations.js"></script>
+  <script src="../src/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMMOYA — Plateforme immobilière premium</title>
+  <meta name="description" content="IMMOYA, la plateforme pour rechercher, comparer et sauvegarder des biens immobiliers réels au Portugal, en France, en Italie et aux États-Unis." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../src/css/styles.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main>
+    <!-- 1. Hero immobilier -->
+    <!-- Grande photo d'une annonce réelle (Untera) avec titre et moteur de recherche intégrés,
+         conforme à la maquette ; fond sombre uni tant que la photo n'est pas chargée -->
+    <!-- La photo occupe toute la section hero, bord à bord, sur au moins ~85 % de la hauteur d'écran -->
+    <section id="hero" class="relative overflow-hidden bg-accent-navy text-white min-h-[85vh] md:min-h-[88vh] flex items-center">
+      <img data-hero-photo alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent"></div>
+
+      <div class="relative w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 mb-3" data-i18n="hero.eyebrow">— L'immobilier, autrement</p>
+          <h1 class="text-4xl md:text-6xl font-bold max-w-2xl leading-tight" data-i18n="hero.title">Trouvez le bien qui vous ressemble</h1>
+          <p class="mt-4 text-white/85 max-w-xl text-sm md:text-base" data-i18n="hero.subtitle">
+            Des biens réels au Portugal, en France, en Italie et aux États-Unis, réunis sur une
+            seule plateforme pour comparer et sauvegarder facilement.
+          </p>
+
+          <!-- 2. Moteur de recherche, posé sur la photo -->
+          <div id="search-engine-container" class="card p-4 md:p-5 mt-8 md:mt-10 max-w-4xl text-ink min-h-[88px]"></div>
+
+          <p class="hidden mt-4 text-[11px] text-white/70">
+            <span data-i18n="hero.photoCredit">Photo : annonce réelle —</span>
+            <a data-hero-credit class="underline hover:text-white"></a>
+          </p>
+      </div>
+    </section>
+
+    <!-- Bandeau de réassurance, juste sous le moteur de recherche -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+        <p class="flex items-center gap-2 text-sm text-ink/60"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-accent-green"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg> <span data-i18n="trust.choice">Large choix de biens réels</span></p>
+        <p class="flex items-center gap-2 text-sm text-ink/60"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-accent-green"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> <span data-i18n="trust.search">Recherche rapide et intuitive</span></p>
+        <p class="flex items-center gap-2 text-sm text-ink/60"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-accent-green"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> <span data-i18n="trust.support">Accompagnement personnalisé</span></p>
+        <p class="flex items-center gap-2 text-sm text-ink/60"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-accent-green"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/></svg> <span data-i18n="trust.secure">Sources vérifiées</span></p>
+      </div>
+    </section>
+
+    <!-- 3. Biens populaires -->
+    <section id="featured-properties" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl text-ink reveal" data-i18n="section.featured">Biens populaires</h2>
+        <a href="properties.html" class="text-sm text-accent-green hover:underline reveal" data-i18n="action.seeAll">Voir tout →</a>
+      </div>
+      <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- 4. Biens récemment ajoutés -->
+    <section id="recent-properties" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <h2 class="text-3xl text-ink mb-8 reveal" data-i18n="section.recent">Biens récemment ajoutés</h2>
+      <div id="recent-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- 5. Types de biens -->
+    <section id="property-types" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <h2 class="text-3xl text-ink mb-8 reveal" data-i18n="section.types">Types de biens</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="properties.html?type=Appartement" class="card reveal p-6 text-center hover:border-accent-green/40">Appartement</a>
+        <a href="properties.html?type=Maison" class="card reveal p-6 text-center hover:border-accent-green/40">Maison</a>
+        <a href="properties.html?type=Villa" class="card reveal p-6 text-center hover:border-accent-green/40">Villa</a>
+        <a href="properties.html?type=Résidentiel" class="card reveal p-6 text-center hover:border-accent-green/40">Résidentiel</a>
+        <a href="properties.html?type=Terrain" class="card reveal p-6 text-center hover:border-accent-green/40">Terrain</a>
+        <a href="properties.html?type=Bureau" class="card reveal p-6 text-center hover:border-accent-green/40">Bureau</a>
+        <a href="properties.html?type=Commerce" class="card reveal p-6 text-center hover:border-accent-green/40">Commerce</a>
+        <a href="properties.html" class="card reveal p-6 text-center hover:border-accent-green/40" data-i18n="types.seeAll">Tous les biens</a>
+      </div>
+    </section>
+
+    <!-- 6. Destinations : marchés réels ciblés (Portugal, France, Italie, États-Unis) -->
+    <section id="destinations" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <h2 class="text-3xl text-ink mb-8 reveal" data-i18n="section.destinations">Destinations</h2>
+      <div id="destinations-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- 7. Pourquoi IMMOYA -->
+    <section id="why-immoya" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <h2 class="text-3xl text-ink mb-8 reveal" data-i18n="section.why">Pourquoi IMMOYA</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="reveal">
+          <p class="text-xl text-accent-green mb-2 font-semibold" data-i18n="why.real.title">Données réelles</p>
+          <p class="text-sm text-ink/70" data-i18n="why.real.text">Chaque annonce provient d'une source réelle (Untera), avec un lien vers l'annonce d'origine.</p>
+        </div>
+        <div class="reveal">
+          <p class="text-xl text-accent-green mb-2 font-semibold" data-i18n="why.support.title">Accompagnement dédié</p>
+          <p class="text-sm text-ink/70" data-i18n="why.support.text">Un interlocuteur unique pour organiser vos visites et répondre à vos questions.</p>
+        </div>
+        <div class="reveal">
+          <p class="text-xl text-accent-green mb-2 font-semibold" data-i18n="why.free.title">Sans engagement</p>
+          <p class="text-sm text-ink/70" data-i18n="why.free.text">Consultez, comparez et sauvegardez vos biens favoris sans créer de compte.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Quelques chiffres : données réelles agrégées depuis Untera -->
+    <section id="stats" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <div id="stats-grid" class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"></div>
+    </section>
+
+    <!-- 9. Témoignages : carrousel défilant, contenu de démonstration signalé comme tel -->
+    <section id="testimonials" class="py-16 bg-white border-y border-line overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 mb-8 flex items-center justify-between">
+        <h2 class="text-3xl text-ink reveal" data-i18n="section.testimonials">Ce qu'en disent nos visiteurs</h2>
+        <span class="text-xs text-ink/40 border border-line rounded-full px-3 py-1" data-i18n="testimonials.demo">Avis de démonstration</span>
+      </div>
+      <div id="testimonials-carousel" class="px-4 md:px-8"></div>
+    </section>
+
+    <!-- 10. CTA final -->
+    <section id="cta" class="max-w-7xl mx-auto px-4 md:px-8 py-20 text-center">
+      <div class="card reveal p-10 bg-accent-green text-background">
+        <h2 class="text-2xl md:text-3xl" data-i18n="cta.title">Prêt à trouver votre prochain bien ?</h2>
+        <a href="properties.html" class="btn-secondary mt-6 inline-block border-background/30 text-background hover:border-background/60" data-i18n="cta.button">Parcourir le catalogue</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../src/js/format.js"></script>
+  <script src="../src/js/favorites.js"></script>
+  <script src="../src/js/api.js"></script>
+  <script src="../src/js/i18n.js"></script>
+  <script src="../src/components/navbar.js"></script>
+  <script src="../src/components/footer.js"></script>
+  <script src="../src/components/property-card.js"></script>
+  <script src="../src/components/search-box.js"></script>
+  <script src="../src/components/testimonials.js"></script>
+  <script src="../src/js/home.js"></script>
+  <script src="../src/js/animations.js"></script>
+  <script src="../src/js/app.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => renderTestimonials("testimonials-carousel"));</script>
+</body>
+</html>

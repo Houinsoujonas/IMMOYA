@@ -1,0 +1,97 @@
+/* Fichier source Tailwind : compilé par la CLI vers src/css/styles.css */
+
+/* Injecte les classes de base (reset), les composants et les utilitaires Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles globaux personnalisés, appliqués en plus des utilitaires Tailwind */
+@layer base {
+  /* Applique la police de corps et les couleurs de fond/texte du design system à toute la page */
+  body {
+    @apply bg-background text-ink font-sans antialiased;
+  }
+
+  /* Titres resserrés (tracking négatif), conforme à la maquette */
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Carte réutilisable (biens, témoignages, etc.) : bordure fine, ombre légère, radius modéré */
+  .card {
+    @apply bg-white border border-line rounded-card shadow-soft;
+  }
+
+  /* Bouton principal : forme pilule (conforme à la maquette), dans la couleur d'accent */
+  .btn-primary {
+    @apply inline-block bg-accent-green text-white px-6 py-3 rounded-full font-medium transition-colors duration-200 hover:bg-accent-navy;
+  }
+
+  /* Bouton secondaire discret (contour uniquement), même forme pilule */
+  .btn-secondary {
+    @apply inline-block border border-line text-ink px-6 py-3 rounded-full font-medium transition-colors duration-200 hover:border-ink/30;
+  }
+
+  /* Bouton de danger discret (suppression), toujours sobre : pas de rouge criard */
+  .btn-danger {
+    @apply inline-block border border-red-700/30 text-red-700 px-4 py-2 rounded-full text-sm transition-colors duration-200 hover:bg-red-700/5;
+  }
+
+  /* Squelette de chargement (loading state) : bloc gris qui pulse doucement */
+  .skeleton {
+    @apply bg-ink/10 rounded-card animate-pulse;
+  }
+}
+
+@layer utilities {
+  /* État initial des éléments animés au scroll (voir src/js/animations.js) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  /* État final une fois l'élément entré dans le viewport */
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Infobulle des icônes de la navbar (recherche, favoris) : visible au survol et au focus clavier */
+  .nav-tooltip {
+    @apply pointer-events-none absolute right-0 top-full mt-2 whitespace-nowrap rounded-lg bg-ink px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-soft transition-opacity duration-150;
+  }
+  .group:hover > .nav-tooltip,
+  .group:focus-visible > .nav-tooltip {
+    @apply opacity-100;
+  }
+
+  /* Défilement continu du carrousel de témoignages (contenu dupliqué une fois dans le JS,
+     donc translateX(-50%) ramène exactement au point de départ visuel : boucle invisible) */
+  .testimonials-track {
+    animation: testimonials-scroll 60s linear infinite;
+  }
+
+  .testimonials-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes testimonials-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Respecte la préférence système de réduction des animations (§6.2 et §13 du cahier) */
+  @media (prefers-reduced-motion: reduce) {
+    .testimonials-track {
+      animation: none;
+    }
+    .reveal {
+      transition: none;
+    }
+  }
+}

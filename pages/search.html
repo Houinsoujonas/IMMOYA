@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recherche avancée — IMMOYA</title>
+  <meta name="description" content="Recherche immobilière avancée : combinez pays, type et budget pour trouver le bien idéal." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../src/css/styles.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <!-- Bandeau photo (annonce réelle Untera) avec titre en surimpression, comme la maquette -->
+  <!-- La photo occupe toute la section hero, bord à bord, comme sur l'accueil -->
+  <section id="search-hero" class="relative overflow-hidden bg-accent-navy text-white min-h-[85vh] md:min-h-[88vh] flex items-center">
+    <img data-hero-photo alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" />
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent"></div>
+    <div class="relative w-full max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-16">
+      <h1 data-i18n="searchPage.title" class="text-4xl md:text-6xl font-bold leading-tight max-w-2xl">Recherche immobilière</h1>
+      <p data-i18n="searchPage.subtitle" class="text-white/85 text-sm md:text-base mt-4 max-w-xl">
+        Portugal, France, Italie, États-Unis : combinez pays, type et budget.
+      </p>
+
+      <!-- La soumission redirige vers /biens avec les critères en paramètres d'URL, qui reste
+           l'unique source des résultats (§7.4 du cahier) : pas de deuxième moteur de recherche ici. -->
+      <div id="search-form-container" class="card p-4 md:p-5 mt-8 md:mt-10 max-w-4xl text-ink min-h-[88px]"></div>
+
+      <p class="hidden mt-4 text-[11px] text-white/70">
+        <span data-i18n="hero.photoCredit">Photo : annonce réelle —</span>
+        <a data-hero-credit class="underline hover:text-white"></a>
+      </p>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 md:px-8 pb-16">
+
+    <!-- Destinations réelles, illustrées par une photo d'annonce réelle de chaque pays -->
+    <section class="mt-12">
+      <h2 data-i18n="searchPage.destinations" class="text-xl font-bold text-ink mb-4">Explorer par destination</h2>
+      <div id="search-destinations" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- Sélection d'annonces réelles des 4 marchés ciblés -->
+    <section class="mt-12">
+      <div class="flex items-center justify-between mb-4">
+        <h2 data-i18n="searchPage.listings" class="text-xl font-bold text-ink">Annonces à découvrir</h2>
+        <a href="properties.html" data-i18n="action.seeAll" class="text-sm text-accent-green font-medium">Voir tout →</a>
+      </div>
+      <div id="search-listings" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../src/js/format.js"></script>
+  <script src="../src/js/api.js"></script>
+  <script src="../src/js/favorites.js"></script>
+  <script src="../src/js/i18n.js"></script>
+  <script src="../src/components/navbar.js"></script>
+  <script src="../src/components/footer.js"></script>
+  <script src="../src/components/property-card.js"></script>
+  <script src="../src/components/search-box.js"></script>
+  <script src="../src/js/search-page.js"></script>
+  <script src="../src/js/animations.js"></script>
+  <script src="../src/js/app.js"></script>
+</body>
+</html>

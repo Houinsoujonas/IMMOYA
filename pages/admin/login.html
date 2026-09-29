@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion admin — IMMOYA</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../../src/css/styles.css" />
+</head>
+<body class="bg-ink min-h-screen flex items-center justify-center px-4">
+  <div class="card p-8 w-full max-w-sm">
+    <p class="font-display text-xl text-ink text-center mb-1">IMMOYA</p>
+    <p class="text-xs text-ink/50 text-center mb-6 uppercase tracking-widest">Espace admin</p>
+
+    <form id="login-form" class="space-y-4">
+      <div>
+        <label class="block text-xs text-ink/60 mb-1">Mot de passe</label>
+        <input type="password" name="password" required class="w-full border border-ink/15 rounded-card px-3 py-2 text-sm" />
+      </div>
+      <button type="submit" class="btn-primary w-full text-sm">Se connecter</button>
+      <p id="login-feedback"></p>
+    </form>
+  </div>
+
+  <script src="../../src/js/admin-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Détail du bien — IMMOYA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../src/css/styles.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="max-w-6xl mx-auto px-4 md:px-8 py-10">
+    <p class="text-xs text-ink/50 mb-6">
+      <a href="index.html" class="hover:underline">Accueil</a> ·
+      <a href="properties.html" class="hover:underline">Biens</a> ·
+      <span id="breadcrumb-title">...</span>
+    </p>
+
+    <div id="property-detail">
+      <!-- Galerie -->
+      <div id="gallery" class="relative"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-8">
+        <!-- Colonne principale : infos + description + équipements + carte -->
+        <div class="md:col-span-2">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h1 id="property-title" class="text-2xl md:text-3xl font-bold text-ink">...</h1>
+              <p id="property-location" class="flex items-center gap-1 text-ink/50 mt-2 text-sm"></p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <button id="favorite-toggle-detail" type="button" aria-label="Ajouter aux favoris" class="w-10 h-10 rounded-full border border-line flex items-center justify-center text-lg text-ink/60 hover:border-ink/30"></button>
+              <button id="share-toggle" type="button" aria-label="Copier le lien" class="w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink/60 hover:border-ink/30">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.6l6.8-3.8M8.6 13.4l6.8 3.8"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <p id="property-price" class="text-2xl font-bold text-accent-green mt-4 pb-2 border-b-2 border-accent-green inline-block">...</p>
+
+          <p id="source-notice" class="hidden text-xs text-ink/50 mt-2"></p>
+
+          <h2 class="text-lg font-semibold text-ink mt-8 mb-3">Description</h2>
+          <p id="property-description" class="text-ink/70 leading-relaxed"></p>
+
+          <h2 class="text-lg font-semibold text-ink mt-8 mb-3">Caractéristiques</h2>
+          <ul id="property-characteristics" class="grid grid-cols-2 gap-y-2 text-sm text-ink/70"></ul>
+
+          <h2 class="text-lg font-semibold text-ink mt-8 mb-3">Équipements</h2>
+          <ul id="property-amenities" class="flex flex-wrap gap-2"></ul>
+
+          <h2 class="text-lg font-semibold text-ink mt-8 mb-3">Localisation</h2>
+          <div class="card p-6 text-sm text-ink/50 text-center">
+            Carte non disponible pour ce bien — voir l'adresse ci-dessus.
+          </div>
+        </div>
+
+        <!-- Colonne latérale : actions + agent + formulaire de contact/visite -->
+        <div class="space-y-6">
+          <div class="card p-6 sticky top-24 space-y-3">
+            <button id="btn-contact" type="button" class="btn-primary text-sm w-full">Contacter le propriétaire</button>
+            <button id="btn-visit" type="button" class="btn-secondary text-sm w-full">Demander une visite</button>
+          </div>
+
+          <!-- Coordonnées de contact IMMOYA, statiques (pas de compte agent individuel dans cette version) -->
+          <div class="card p-6">
+            <p class="text-xs text-ink/50 mb-3">Une question sur ce bien ?</p>
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-accent-navy text-white flex items-center justify-center font-semibold">IM</div>
+              <div>
+                <p class="text-sm font-medium text-ink">Équipe IMMOYA</p>
+                <p class="text-xs text-ink/50">Réponse sous 24h ouvrées</p>
+              </div>
+            </div>
+            <div class="text-sm text-ink/70 mt-4 space-y-1">
+              <p>contact@immoya.com</p>
+            </div>
+          </div>
+
+          <div id="request-form-section" class="card p-6">
+            <h3 class="text-base font-semibold text-ink mb-4">Une question, une visite ?</h3>
+            <form id="request-form" class="space-y-3">
+              <input type="hidden" name="type" value="contact" />
+              <!-- Piège à robots (honeypot) : invisible et ignoré par les humains, rempli par les bots -->
+              <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true" />
+              <input type="text" name="clientName" placeholder="Votre nom" required class="w-full border border-line rounded-full px-4 py-2.5 text-sm" />
+              <input type="email" name="clientEmail" placeholder="Votre email" required class="w-full border border-line rounded-full px-4 py-2.5 text-sm" />
+              <input type="tel" name="clientPhone" placeholder="Votre téléphone" class="w-full border border-line rounded-full px-4 py-2.5 text-sm" />
+              <textarea name="message" placeholder="Votre message" rows="3" required class="w-full border border-line rounded-2xl px-4 py-2.5 text-sm"></textarea>
+              <button type="submit" class="btn-primary text-sm w-full">Envoyer</button>
+              <p id="request-feedback"></p>
+            </form>
+          </div>
+
+          <!-- Partage : URLs de partage standard des réseaux, aucune donnée personnelle envoyée -->
+          <div class="flex items-center gap-3 px-1">
+            <span class="text-xs text-ink/50">Partager :</span>
+            <a id="share-facebook" href="#" target="_blank" rel="noopener" aria-label="Partager sur Facebook" class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink/60 hover:border-ink/30 text-xs">f</a>
+            <a id="share-x" href="#" target="_blank" rel="noopener" aria-label="Partager sur X" class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink/60 hover:border-ink/30 text-xs">X</a>
+            <a id="share-linkedin" href="#" target="_blank" rel="noopener" aria-label="Partager sur LinkedIn" class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink/60 hover:border-ink/30 text-xs">in</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Biens similaires -->
+      <section id="similar-section" class="mt-16">
+        <h2 class="text-2xl font-bold text-ink mb-6">Biens similaires</h2>
+        <div id="similar-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../src/js/format.js"></script>
+  <script src="../src/js/favorites.js"></script>
+  <script src="../src/js/api.js"></script>
+  <script src="../src/js/i18n.js"></script>
+  <script src="../src/components/navbar.js"></script>
+  <script src="../src/components/footer.js"></script>
+  <script src="../src/components/property-card.js"></script>
+  <script src="../src/js/property.js"></script>
+  <script src="../src/js/animations.js"></script>
+  <script src="../src/js/app.js"></script>
+</body>
+</html>
